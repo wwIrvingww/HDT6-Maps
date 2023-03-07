@@ -1,17 +1,37 @@
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        //Inicializacion de variables
+        UserFactory factory = new UserFactory();
+        User user;
         Categories categories = new Categories();
-
         int option;
+        String type = "";
+        Scanner sc = new Scanner(System.in);
+
+
+        //menu
         System.out.println("-\n---Seleccione la interfaz que desea implementar----\n1.HashMap\n2.TreeMap\n3.LinkedHashMap");
         option = sc.nextInt();
+        switch (option){
+            case 1:
+                type =  "hash";
 
-        System.out.println("ingrese el producto");
-        String producto = sc.next();
-        String cat = categories.getCategorie(producto);
-        System.out.println("la categoria de su producto es: "+cat);
+            case 2:
+                type = "tree";
+
+            case 3:
+                type = "linked";
+        }
+        //Implementacion del patron factory
+        user = factory.crearUsuario(type);
+
+        
+
+
+
+
 
     }
+
 }

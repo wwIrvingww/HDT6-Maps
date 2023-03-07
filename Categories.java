@@ -24,7 +24,7 @@ public class Categories {
 
         Bebidas = new ArrayList<String>();
         Bebidas.add("Cerveza tibetana Barley");
-        Bebidas.add("Té frio");
+        Bebidas.add("Te frio");
         Bebidas.add("Coca cola 1 litro");
         Bebidas.add("Coca cola 2 litros");
 

@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.HashMap;
 import java.util.TreeMap;
@@ -6,18 +5,100 @@ import java.util.TreeMap;
 
 class UserFactory {
 
-
+    //LinkedMap//
     class UserLinked implements User {
-        LinkedHashMap<String, ArrayList<String>> colectionLinked = new LinkedHashMap<>();
-    }
 
+        Colection colection = new Colection();
+        LinkedHashMap<String, Colection> colectionLinked = new LinkedHashMap<>();
+        public LinkedHashMap<String, Colection> getColectionLinked() {
+            return colectionLinked;
+        }
+
+        @Override
+        public Colection getColection() {
+            return colection;
+        }
+
+
+
+        @Override
+        public TreeMap<String, Colection> getColectionTree() {
+            return null;
+        }
+
+        @Override
+        public HashMap<String, Colection> getColectionHash() {
+            return null;
+        }
+    }
+    /*
+    ----------------------------------------------------------------------------------------------------------------
+     */
+
+
+
+
+
+
+
+
+    //TreeMap
     class UserTree implements User {
-        TreeMap<String, ArrayList<String>> colectionTree= new TreeMap<>();
+        Colection colection = new Colection();
+
+        TreeMap<String, Colection> colectionTree= new TreeMap<>();
+
+        public TreeMap<String, Colection> getColectionTree() {
+            return colectionTree;
+        }
+        @Override
+        public Colection getColection() {
+            return colection;
+        }
+
+
+
+        @Override
+        public HashMap<String, Colection> getColectionHash() {
+            return null;
+        }
+
+
+        @Override
+        public LinkedHashMap<String, Colection> getColectionLinked() {
+            return null;
+        }
+
+    }
+    //HashMap
+    class UserHash implements User {
+
+        Colection colection = new Colection();
+
+        HashMap colectionHash = new HashMap<String,Colection>();
+
+        public HashMap<String, Colection> getColectionHash() {
+            return colectionHash;
+        }
+
+        @Override
+        public Colection getColection() {
+            return colection;
+        }
+
+
+        @Override
+        public LinkedHashMap<String, Colection> getColectionLinked() {
+            return null;
+        }
+        @Override
+        public TreeMap<String, Colection> getColectionTree() {
+            return null;
+        }
+
+
     }
 
-    class UserHash implements User {
-        HashMap colectionHash = new HashMap<String,ArrayList<String>>();
-    }
 
     public User crearUsuario(String tipo) {
         if (tipo.equalsIgnoreCase("linked")) {

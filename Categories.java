@@ -55,6 +55,11 @@ public class Categories {
 
     }
 
+    /**
+     * obtiene la categoria de un producto
+     * @param producto
+     * @return
+     */
     public String getCategorie(String producto){
 
         if (MueblesTerraza.contains(producto)){
@@ -81,6 +86,11 @@ public class Categories {
         return "no existe";
     }
 
+    /**
+     * elimina los espacios en blanco de un string y hace que todos sean minúsculas
+     * @param producto
+     * @return
+     */
     public String converter (String producto){
         int index = producto.indexOf(" "); // buscamos la posición del primer espacio en blanco
         if (index != -1) { // si encontramos un espacio en blanco
@@ -92,6 +102,15 @@ public class Categories {
         return producto;
     }
 
+    /**
+     * agrega un producto a la coleccion del usuario
+     * @param categoria
+     * @param producto
+     * @param exist
+     * @param user
+     * @param type
+     * @return
+     */
     public String addProduct(int categoria, String producto, String exist, User user, String type){
 
         if (exist == "no existe"){
@@ -176,6 +195,89 @@ public class Categories {
             return "se ha agregado exitosamente";
         }
 
+    }
+
+
+    /**
+     * retorna los datos especificos de un producto
+     * @param producto
+     * @param user
+     * @return
+     */
+    public String dateProduct(String producto, User user){
+        String categorie = getCategorie(producto);
+        int productos = numProduc(producto, user);
+
+        return "La categoria del producto es: " + categorie + "\n" + "El total del producto es: " + productos;
+    }
+
+    /**
+     * retorna el numero total que hay de un producto
+     * @param producto
+     * @param user
+     * @return
+     */
+    public int numProduc(String producto, User user) {
+        String categorie = getCategorie(producto);
+        int numProduc = 0;
+
+
+        switch (categorie){
+            case "MueblesTerraza":
+                numProduc = contArray(user.getColection().MueblesTerraza,producto);
+
+            case "SillonesMasaje":
+                numProduc = contArray(user.getColection().SillonesMasaje,producto);
+
+            case "Bebidas":
+                numProduc = contArray(user.getColection().Bebidas, producto);
+
+            case "Condimentos":
+                numProduc = contArray(user.getColection().Condimentos, producto);
+
+            case "Frutas":
+                numProduc = contArray(user.getColection().Frutas, producto);
+
+            case "Carnes":
+                numProduc = contArray(user.getColection().Carnes, producto);
+
+            case "Lacteos":
+                numProduc = contArray(user.getColection().Lacteos, producto);
+
+        }
+
+        return numProduc;
+        }
+
+    /**
+     * cuanta cuantas veces se repite un producto en un arraylist
+      * @param araarylist
+     * @param producto
+     * @return
+     */
+    public int contArray(ArrayList<String> araarylist, String producto){
+        int i = 0;
+        int totProducto = 0;
+        String comparable;
+        while (i<araarylist.size()){
+            comparable = araarylist.get(i);
+            if (comparable == producto){
+                totProducto++;
+                i++;
+            }
+            else {i++;}
+        }
+        return totProducto;
+    }
+
+    /**
+     * imprime elementos de un arraylist
+     * @param arrayList
+     */
+    public void printCat(ArrayList<String> arrayList) {
+        for (String elemento : arrayList) {
+            System.out.println(elemento);
+        }
     }
 
 }

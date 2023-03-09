@@ -1,3 +1,7 @@
+/**
+ * clase en la que estan los productos de un usuario
+ */
+
 import java.util.ArrayList;
 
 public class Colection {

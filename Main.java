@@ -5,13 +5,38 @@
  * Auxiliar: Cristian Laynez
  */
 
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
+
+        Categories categorias = new Categories();
+        categorias.leerArchivo("ListadoProducto.txt");
+
+        Map<String, List<String>> categoriasMap = categorias.obtenerCategoriasMap();
+
+        for (Map.Entry<String, List<String>> entry : categoriasMap.entrySet()) {
+            String categoria = entry.getKey();
+            List<String> productos = entry.getValue();
+
+            System.out.println("Categoría: " + categoria);
+            System.out.println("Productos:");
+            for (String producto : productos) {
+                System.out.println(producto);
+            }
+            System.out.println();
+        }
+
+
+
+
+        /**
         //Inicializacion de variables
         UserFactory factory = new UserFactory();
         User user;
         Categories categories = new Categories();
+        categories.leerArchivo("ListadoProducto.txt");
         int option;
         int categorie;
         String producto;
@@ -123,6 +148,6 @@ public class Main {
 
 
             }
-        }
+        }*/
     }
 }
